@@ -1,0 +1,11 @@
+#!/bin/sh
+
+{
+  echo "[Todo] rc-service aria2 start"
+  rc-service aria2 start
+  echo "[Todo] rc-service mini_httpd start"
+  rc-service mini_httpd start
+  echo "[Done]"
+} >> /root/start.log
+
+tail -f /dev/null
