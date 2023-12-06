@@ -32,11 +32,50 @@ Example:
 
 ```sh
 cat <<EOF > .env
-IMAGE_VERSION=1.0.0
+IMAGE_VERSION=1.1.0
 DOWNLOAD_DIR=./downloads
 WEB_PORT=8080
 RPC_PORT=6800
 EOF
+```
+
+## Config
+
+1. Create your aria2.conf file.
+2. Edit volumes in compose.yaml.
+
+```diff
+services:
+  aria2:
+    image: adoyle/aria2:${IMAGE_VERSION:-1.1.0}
+    container_name: aria2
+    volumes:
+      - ${DOWNLOAD_DIR:-./downloads}:/root/downloads
++     - ./aria2.conf:/etc/aria2.conf
+    ports:
+      - ${WEB_PORT:-8080}:80
+      - ${RPC_PORT:-6800}:6800
+```
+
+## Logs
+
+No logs to container stdout/stderr. The logs output to below files:
+
+- /root/start.log
+- /var/log/aria2.log
+- /var/log/mini_httpd/*.log
+- /var/log/rc.log
+
+## Debug
+
+### Change log level of aria2
+
+```sh
+docker exec -it aria2 ash
+# change the option: log-level
+vi /etc/aria2.conf
+rc-service aria2 restart
+tail -f /var/log/aria2.log
 ```
 
 ## Build image from source
@@ -44,8 +83,7 @@ EOF
 ```sh
 git clone https://github.com/adoyle-h/aria2-docker.git
 cd aria2-docker
-docker compose build
-docker compose up -d
+make build
 ```
 
 ## Suggestion, Bug Reporting, Contributing
