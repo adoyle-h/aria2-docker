@@ -7,7 +7,7 @@ sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositories
 apk add --no-cache curl aria2 aria2-daemon openrc mini_httpd unzip tini
 EOF
 
-ARG ARIANG_VERSION=1.3.6
+ARG ARIANG_VERSION=1.3.7
 
 RUN <<EOF
 curl -LSso /root/ariang.zip https://mirror.ghproxy.com/https://github.com/mayswind/AriaNg/releases/download/${ARIANG_VERSION}/AriaNg-${ARIANG_VERSION}-AllInOne.zip
