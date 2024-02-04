@@ -1,0 +1,12 @@
+version: '3'
+
+tasks:
+  update-tracker:
+    desc: update the bt-tracker in aria2.conf
+    preconditions:
+      - which sd
+    cmds:
+      - sd '^bt-tracker=.+' "bt-tracker={{.trackers}}" ./aria2.conf
+    vars:
+      trackers:
+        sh: curl -LsSf 'https://cf.trackerslist.com/best_aria2.txt' | grep -o 'https://[^,]\+announce' | tr '\n' ',' | sed 's/,$/\n/'

@@ -86,6 +86,14 @@ cd aria2-docker
 make build
 ```
 
+## Development
+
+First, install `task` command. See https://taskfile.dev/installation/
+
+### Update bt-tracker
+
+`task update-tracker`
+
 ## Suggestion, Bug Reporting, Contributing
 
 **Before opening new Issue/Discussion/PR and posting any comments**, please read [Contributing Guidelines](https://gcg.adoyle.me/CONTRIBUTING).
