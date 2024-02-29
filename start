@@ -2,9 +2,9 @@
 
 {
   echo "[Todo] rc-service aria2 start"
-  rc-service aria2 start
+  rc-service aria2 restart
   echo "[Todo] rc-service mini_httpd start"
-  rc-service mini_httpd start
+  rc-service mini_httpd restart
   echo "[Done]"
 } >> /root/start.log
 
