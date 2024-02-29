@@ -10,3 +10,8 @@ tasks:
     vars:
       trackers:
         sh: curl -LsSf 'https://cf.trackerslist.com/best_aria2.txt' | grep -o 'https://[^,]\+announce' | tr '\n' ',' | sed 's/,$/\n/'
+
+  buildx:
+    desc: build and push multi-arch images
+    cmds:
+      - IMAGE_VERSION={{.CLI_ARGS}} make buildx

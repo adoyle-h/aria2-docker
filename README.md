@@ -94,6 +94,10 @@ First, install `task` command. See https://taskfile.dev/installation/
 
 `task update-tracker`
 
+### Build and push multi-arch images
+
+`task buildx -- $version`
+
 ## Suggestion, Bug Reporting, Contributing
 
 **Before opening new Issue/Discussion/PR and posting any comments**, please read [Contributing Guidelines](https://gcg.adoyle.me/CONTRIBUTING).
